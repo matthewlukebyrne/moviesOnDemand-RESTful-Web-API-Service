@@ -1,0 +1,11 @@
+groupaaa_final_webapi\databases\Database.class
+groupaaa_final_webapi\resources\TransferMovie.class
+groupaaa_final_webapi\resources\CreateAccount.class
+groupaaa_final_webapi\models\Customer.class
+groupaaa_final_webapi\services\AccountService.class
+groupaaa_final_webapi\models\Movie.class
+groupaaa_final_webapi\resources\AddMovie.class
+groupaaa_final_webapi\resources\ListMovies.class
+groupaaa_final_webapi\models\Account.class
+groupaaa_final_webapi\services\MovieService.class
+groupaaa_final_webapi\resources\RemoveMovie.class

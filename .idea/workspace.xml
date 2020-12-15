@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0d9ae22c-0c5c-40e6-b71a-123764751fa7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/models/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/models/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/resources/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/resources/ListMovies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/services/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/groupaaa_final_webapi/services/MovieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/groupaaa_final_webapi/models/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/groupaaa_final_webapi/models/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/groupaaa_final_webapi/resources/Resource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/groupaaa_final_webapi/services/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/groupaaa_final_webapi/services/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/groupaaa_final_webapi/services/MovieService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/groupaaa_final_webapi/services/MovieService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/Tester.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/models/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/models/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/resources/Resource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/services/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/services/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/services/MovieService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/groupAAA_final_webAPI-1.0/WEB-INF/classes/groupaaa_final_webapi/services/MovieService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1letalSOcwKK0iuS9rHUsklqTn1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0d9ae22c-0c5c-40e6-b71a-123764751fa7" name="Default Changelist" comment="" />
+      <created>1607969450115</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607969450115</updated>
+    </task>
+    <servers />
+  </component>
+</project>

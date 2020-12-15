@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  This is the area where the required data is declated in the models package for the Account information
  */
 package groupaaa_final_webapi.models;
 
 /**
- *@author keanrz
- * @author matth
+ * @author x17492632
+ * @author x17138744
  */
 
 import java.util.ArrayList;
@@ -62,4 +60,9 @@ public class Account {
     public static void setMovie(List<Movie> movie) {
         Account.movie = movie;
     }  
+
+     public String printMessage() {
+        String str = this.getId() + " " + this.getNickname() + " "+ this.getPassword() +  Account.getMovie();
+        return str;
+    }
 }

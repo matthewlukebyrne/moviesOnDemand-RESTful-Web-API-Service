@@ -6,11 +6,11 @@
 package groupaaa_final_webapi.resources;
 
 /**
- *@author keanrz
- * @author matth
+ * @author x17492632
+ * @author x17138744
  */
-import groupaaa_final_webapi.models.Account;
-import groupaaa_final_webapi.services.AccountService;
+import groupaaa_final_webapi.models.Movie;
+import groupaaa_final_webapi.services.MovieService;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -18,44 +18,43 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+@Path("/movies")
 
+public class ListMovies {
 
-@Path("/accounts")
+    MovieService movieService = new MovieService();
 
-public class Resource {
-    
-    AccountService aService = new AccountService();
     /*
     If using POSTMAN as client, remember setting a Header 
     "Accept:application/json" for retrieving JSON format
     "Accept:application/xml" for retrieving XML format
-    */    
-   
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Account> getMessagesXML() {
-        return aService.getAllAccounts();
-    }
-    
+     */
+    // path /movies
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Account> getMessagesJSON() {
-        return aService.getAllAccounts();
+    public List<Movie> getMessagesJSON() {
+        return movieService.getAllMovies();
     }
 
-          
- 
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_XML)
-    public Account getMessageXML(@PathParam("id") int id) {
-        return aService.getAccount(id);
-    }
-    
+    // path /movies/1
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Account getMessageJSON(@PathParam("id") int id) {
-        return aService.getAccount(id);
+    public Movie getMessageJSON(@PathParam("id") int id) {
+        return movieService.getMovie(id);
     }
-} 
+
+    @GET
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Movie> getMessagesXML() {
+        return movieService.getAllMovies();
+    }
+
+//    // List Movies by ID number
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    public Movie getMessageXML(@PathParam("id") int id) {
+        return movieService.getMovie(id);
+    }
+}
