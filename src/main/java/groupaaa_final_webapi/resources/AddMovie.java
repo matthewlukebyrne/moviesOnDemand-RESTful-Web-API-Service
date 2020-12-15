@@ -5,14 +5,9 @@
  */
 package groupaaa_final_webapi.resources;
 
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
+
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
-import javax.ws.rs.core.MediaType;
+
 
 /**
  * @author x17492632
@@ -22,33 +17,4 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/add")
 public class AddMovie {
-
-    @Context
-    private UriInfo context;
-
-    /**
-     * Creates a new instance of AddMovie
-     */
-    public AddMovie() {
-    }
-
-    /**
-     * Retrieves representation of an instance of groupaaa_final_webapi.resources.AddMovie
-     * @return an instance of java.lang.String
-     */
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of AddMovie
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.APPLICATION_XML)
-    public void putXml(String content) {
-    }
 }

@@ -1,5 +1,5 @@
 /*
- *  This is the area where the required data is declated in the models package for the Account information
+ *  This is the area where the required data is declated in the models package for the Accounts information
  */
 package groupaaa_final_webapi.models;
 
@@ -13,20 +13,21 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Account {
+public class Accounts {
     private int id;
     private String nickname;
     private String password;
-    public static List<Movie> movie = new ArrayList<>();
+    public static List<Movies> movie = new ArrayList<>();
 
     
-    public Account() {
+    public Accounts() {
     }
 
-    public Account(int id, String nickname, String password, List <Movie> movie ) {
+    public Accounts(int id, String nickname, String password, List <Movies> movie ) {
         this.id = id;
         this.nickname = nickname;
         this.password = password;
+        Accounts.movie = new ArrayList<>();
     }
 
     public int getId() {
@@ -53,16 +54,16 @@ public class Account {
         this.password = password;
     }
 
-    public static List<Movie> getMovie() {
+    public static List<Movies> getMovie() {
         return movie;
     }
 
-    public static void setMovie(List<Movie> movie) {
-        Account.movie = movie;
+    public static void setMovie(List<Movies> movie) {
+        Accounts.movie = movie;
     }  
-
-     public String printMessage() {
-        String str = this.getId() + " " + this.getNickname() + " "+ this.getPassword() +  Account.getMovie();
+   
+  public String printAccount() {
+        String str = this.getId() + " " + this.getNickname() + " "+ this.getPassword() +  Accounts.getMovie();
         return str;
     }
 }

@@ -1,5 +1,5 @@
 /*
- *  This is the area where the required data is declated in the models package for the Customer information
+ *  This is the area where the required data is declated in the models package for the Customers information
  */
 package groupaaa_final_webapi.models;
 
@@ -13,23 +13,23 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Customer {
+public class Customers {
     private int id;
     private String name;
     private String address;
     private String email;
-    public static List<Account> account = new ArrayList<>();
+    public static List<Accounts> account = new ArrayList<>();
 
     
-    public Customer() {
+    public Customers() {
     }
 
-    public Customer(int id, String name, String address, String email, List <Account> account) {
+    public Customers(int id, String name, String address, String email, List <Accounts> account) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.email = email;
-        this.account = account;
+        Customers.account = new ArrayList<>();
     }
 
     public int getId() {
@@ -64,11 +64,21 @@ public class Customer {
         this.email = email;
     }
 
-    public static List<Account> getAccount() {
+    public static List<Accounts> getAccount() {
         return account;
     }
 
-    public static void setAccount(List<Account> account) {
-        Customer.account = account;
+    public static void setAccount(List<Accounts> account) {
+        Customers.account = account;
     }
+
+    @Override
+    public String toString() {
+        return "Customers{" + "id=" + id + ", name=" + name + ", address=" + address + ", email=" + email + '}';
+    }
+    
+    
 }
+
+
+

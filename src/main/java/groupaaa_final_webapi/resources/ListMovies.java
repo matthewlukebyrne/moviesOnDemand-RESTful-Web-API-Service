@@ -9,7 +9,7 @@ package groupaaa_final_webapi.resources;
  * @author x17492632
  * @author x17138744
  */
-import groupaaa_final_webapi.models.Movie;
+import groupaaa_final_webapi.models.Movies;
 import groupaaa_final_webapi.services.MovieService;
 import java.util.List;
 import javax.ws.rs.GET;
@@ -29,10 +29,13 @@ public class ListMovies {
     "Accept:application/json" for retrieving JSON format
     "Accept:application/xml" for retrieving XML format
      */
+    
+    
+    
     // path /movies
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Movie> getMessagesJSON() {
+    public List<Movies> getMessagesJSON() {
         return movieService.getAllMovies();
     }
 
@@ -40,21 +43,21 @@ public class ListMovies {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Movie getMessageJSON(@PathParam("id") int id) {
+    public Movies getMessageJSON(@PathParam("id") int id) {
         return movieService.getMovie(id);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Movie> getMessagesXML() {
+    public List<Movies> getMessagesXML() {
         return movieService.getAllMovies();
     }
 
-//    // List Movies by ID number
+    // List Movies by ID number
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Movie getMessageXML(@PathParam("id") int id) {
+    public Movies getMessageXML(@PathParam("id") int id) {
         return movieService.getMovie(id);
     }
 }

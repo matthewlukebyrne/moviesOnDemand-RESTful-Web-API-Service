@@ -3,8 +3,9 @@
  */
 package groupaaa_final_webapi.databases;
 
-import groupaaa_final_webapi.models.Account;
-import groupaaa_final_webapi.models.Movie;
+import groupaaa_final_webapi.models.Accounts;
+import groupaaa_final_webapi.models.Customers;
+import groupaaa_final_webapi.models.Movies;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,38 +13,40 @@ import java.util.List;
  * @author x17492632
  * @author x17138744
  */
-
 public class Database {
 
-    public static List<Account> accountDB = new ArrayList<>();
-    public static List<Movie> movieDB = new ArrayList<>();
+    public static List<Customers> customerDB = new ArrayList<>();
+    public static List<Accounts> accountDB = new ArrayList<>();
+    public static List<Movies> movieDB = new ArrayList<>();
     public static boolean init = true;
 
     // Create a constructor for the class
     public Database() {
         if (init) {
 
-            // Create some comments
-            Account a1 = new Account(1, "superkearnz", "password",  movieDB);
-            Account a2 = new Account(2, "supermatt", "password345", movieDB);
-            Account a3 = new Account(3, "lemmy", "password2", movieDB);
-            Account a4 = new Account(4, "harrykane", "passworz", movieDB);
-            Account a5 = new Account(5, "frankieboyle", "passte", movieDB);
-            Account a6 = new Account(6, "xxx-tentacion", "passwody", movieDB);
+            // Create some customers
+            Customers c1 = new Customers(1, "Matt", "123 Town St", "matt@gmail.com", getAccountsDB());
+            Customers c2 = new Customers(2, "Sam", "134 Hill St", "matt@gmail.com", getAccountsDB());
+            Customers c3 = new Customers(3, "Harry", "112 Lamb St", "matt@gmail.com", getAccountsDB());
+            Customers c4 = new Customers(4, "Steve", "178 Dave St", "matt@gmail.com", getAccountsDB());
+            Customers c5 = new Customers(5, "Bob", "167 Hope St", "matt@gmail.com", getAccountsDB());
+            Customers c6 = new Customers(6, "Rudy", "45 Cruise St", "matt@gmail.com", getAccountsDB());
 
-            accountDB.add(a1);
-            accountDB.add(a2);
-            accountDB.add(a3);
-            accountDB.add(a4);
-            accountDB.add(a5);
-            accountDB.add(a6);
+            // Create some Accounts
+            Accounts a1 = new Accounts(1, "superkearnz", "password",  getMoviesDB());
+            Accounts a2 = new Accounts(2, "supermatt", "password345", getMoviesDB());
+            Accounts a3 = new Accounts(3, "lemmy", "password2", getMoviesDB());
+            Accounts a4 = new Accounts(4, "harrykane", "passworz", getMoviesDB());
+            Accounts a5 = new Accounts(5, "frankieboyle", "passte", getMoviesDB());
+            Accounts a6 = new Accounts(6, "xxx-tentacion", "passwody", getMoviesDB());
 
-            Movie m1 = new Movie(1, "Matrix", "sci-fi", true, true);
-            Movie m2 = new Movie(2, "Nacho Libre 2", "comedy", true, true);
-            Movie m3 = new Movie(3, "Le Espana", "fantasy", false, true);
-            Movie m4 = new Movie(4, "Terminator", "sci-fi", true, false);
-            Movie m5 = new Movie(5, "40 Year Old Virgin", "comedy", true, true);
-            Movie m6 = new Movie(6, "Matrix Reloaded", "sci-fi", true, true);
+            // Create some movies
+            Movies m1 = new Movies(1, "Matrix", "sci-fi", true, true);
+            Movies m2 = new Movies(2, "Nacho Libre 2", "comedy", true, true);
+            Movies m3 = new Movies(3, "Le Espana", "fantasy", false, true);
+            Movies m4 = new Movies(4, "Terminator", "sci-fi", true, false);
+            Movies m5 = new Movies(5, "40 Year Old Virgin", "comedy", true, true);
+            Movies m6 = new Movies(6, "Matrix Reloaded", "sci-fi", true, true);
 
             movieDB.add(m1);
             movieDB.add(m2);
@@ -52,15 +55,33 @@ public class Database {
             movieDB.add(m5);
             movieDB.add(m6);
 
+            accountDB.add(a1);
+            accountDB.add(a2);
+            accountDB.add(a3);
+            accountDB.add(a4);
+            accountDB.add(a5);
+            accountDB.add(a6);
+
+            customerDB.add(c1);
+            customerDB.add(c2);
+            customerDB.add(c3);
+            customerDB.add(c4);
+            customerDB.add(c5);
+            customerDB.add(c6);
+
             init = false;
         }
     }
-    
-        public static List<Account> getAccountDB() {
+
+    public static List<Accounts> getAccountsDB() {
         return accountDB;
     }
-    
-    public static List<Movie> getMovieDB() {
+
+    public static List<Movies> getMoviesDB() {
         return movieDB;
-    }
+     }
+    
+    public static List<Customers> getCustomersDB() {
+        return customerDB;
+     }
 }

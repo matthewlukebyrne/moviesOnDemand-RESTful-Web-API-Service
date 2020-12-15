@@ -1,5 +1,5 @@
 /*
- *  This is the area where the required data is declated in the models package for the Movie information
+ *  This is the area where the required data is declated in the models package for the Movies information
  */
 package groupaaa_final_webapi.models;
 
@@ -11,7 +11,7 @@ package groupaaa_final_webapi.models;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Movie {
+public class Movies {
     private int id;
     private String name;
     private String genre;
@@ -19,10 +19,10 @@ public class Movie {
     private Boolean recco;
 
     
-    public Movie() {
+    public Movies() {
     }
 
-    public Movie(int id, String name, String genre, Boolean watched, Boolean recco) {
+    public Movies(int id, String name, String genre, Boolean watched, Boolean recco) {
         this.id = id;
         this.name = name;
         this.genre = genre;
