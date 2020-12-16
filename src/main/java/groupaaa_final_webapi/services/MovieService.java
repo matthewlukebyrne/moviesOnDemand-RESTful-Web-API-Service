@@ -4,10 +4,15 @@
 package groupaaa_final_webapi.services;
 
 import groupaaa_final_webapi.databases.Database;
-import groupaaa_final_webapi.models.Accounts;
-import groupaaa_final_webapi.models.Customers;
-import groupaaa_final_webapi.models.Movies;
+import groupaaa_final_webapi.models.Account;
+import groupaaa_final_webapi.models.Customer;
+import groupaaa_final_webapi.models.Movie;
+import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 /**
  * @author x17492632
@@ -18,13 +23,9 @@ public class MovieService {
 
     
     Database m = new Database();
-    private List<Movies> movies = m.getMoviesDB();
+    private List<Movie> movies = m.getMoviesDB();
     
-    Database a = new Database();
-    private List<Accounts> accounts = a.getAccountsDB();
     
-    Database c = new Database();
-    private List<Customers> customers = c.getCustomersDB();
     
     
 //    // Add movie
@@ -47,12 +48,36 @@ public class MovieService {
   
     // List movies
     // The customer can request the list of movies that exist in any account at any time.
-    public List<Movies> getAllMovies() {
+    public List<Movie> getAllMovies() {
         return movies;
     }
 
+    
     // Get Movies by specific ID
-    public Movies getMovie(int id) {
+    public Movie getMovie(int id) {
         return movies.get(id - 1);
+    }
+    
+
+    public List<Movie> findRecommendedMovies(String organized) {
+      List<Movie> watchedMovies = new ArrayList<>();
+
+      for (Movie m: getAllMovies()) {
+          if ((organized == null || m.getName().equals(organized))) {
+             watchedMovies.add(m);
+          }
+      }
+      return watchedMovies;
+    }
+    
+    public List<Movie> findWatchedMovies(String organized) {
+      List<Movie> watchedMovies = new ArrayList<>();
+
+      for (Movie m: getAllMovies()) {
+          if ((organized == null || m.getName().equals(organized))) {
+             watchedMovies.add(m);
+          }
+      }
+      return watchedMovies;
     }
 }
