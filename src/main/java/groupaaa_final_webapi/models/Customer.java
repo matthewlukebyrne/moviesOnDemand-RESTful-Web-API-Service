@@ -24,7 +24,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, String email, List <Account> account) {
+    public Customer(int customerID, String name, String address, String email, List<Account>account) {
         this.customerID = customerID;
         this.name = name;
         this.address = address;
@@ -69,11 +69,11 @@ public class Customer {
         return accounts;
     }
 
-    public void setAccount(List<Account> account) {
-        this.accounts = account;
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
     
-    public void addAccount(Account account) {
+    public void addAccountToCustomer(Account account) {
        accounts.add(account);
        System.out.println("add a new account");
     }
@@ -89,11 +89,6 @@ public class Customer {
             allaccounts=allaccounts+accounts.get(i).printAccount()+" ";
        return allaccounts;
     }
-    
-    //@Override
-    //public String toString() {
-    //    return "Customers{" + "id=" + CiustomerID + ", name=" + name + ", address=" + address + ", email=" + email + '}';
-    //}
 }
 
 

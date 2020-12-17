@@ -8,7 +8,6 @@ package groupaaa_final_webapi.services;
 import groupaaa_final_webapi.databases.Database;
 import groupaaa_final_webapi.models.Customer;
 import java.util.List;
-import java.util.ArrayList;
 
 /**
  *

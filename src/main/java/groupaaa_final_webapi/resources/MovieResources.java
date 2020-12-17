@@ -11,8 +11,8 @@ package groupaaa_final_webapi.resources;
  */
 import groupaaa_final_webapi.models.Movie;
 import groupaaa_final_webapi.services.MovieService;
-import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -21,68 +21,56 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("/movies")
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
 public class MovieResources {
 
-    MovieService movieService = new MovieService();
-
-
-    // path /movies
+    private MovieService movieService = new MovieService();
+    
+    
+    //List ALL Movies for a specific {Account} 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Movie> getMessagesJSON() {
-        return movieService.getAllMovies();
+    @Produces(MediaType.APPLICATION_XML)
+    public List<Movie> getAllMovies(@PathParam("accountID") int acc_ID) {
+        System.out.println("get all movies for Accounts..."+acc_ID);
+	return movieService.getAllMoviesForAccount(acc_ID);
     }
     
-    // List Movies by ID number
-    // path /movies/1
+    // list a specific {movieID} for a  specific {accountID}. 
+    //GET accounts for a customer specifying the customerID that was associated with @PATH in the Accounts Resources
     @GET
-    @Path("/{MovieID}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Movie getMessageJSON(@PathParam("MovieID") int id) {
-        return movieService.getMovie(id);
+    @Produces(MediaType.APPLICATION_XML)
+    @Path("/{movieID}")
+    public Movie getMovie(@PathParam("movieID") int movie_ID, @PathParam("accountID") int acc_ID) {
+    	System.out.println("getMovieByID..."+movie_ID +"getAccountByID..."+acc_ID);
+	return movieService.getMovieByID(acc_ID,movie_ID);
     }
-    
-    
     /*
-    //JSON
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Movie> getMessagesXML() {
-        return movieService.getAllMovies();
-    }
-
-    
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_XML)
-    public Movie getMessageXML(@PathParam("id") int id) {
-        return movieService.getMovie(id);
-    }
-    */
-    
     // path /movies/recommended
     @GET 
     @Produces(MediaType.APPLICATION_JSON)
     //@Produces(MediaType.APPLICATION_XML)
-     public List<Movie> getRecommendedMovies (@QueryParam("organized") String organized) 
+     public List<Movie> getRecommendedMovies (@QueryParam("organised") String organised) 
      { 
-       if ((organized != null)) 
+       if ((organised != null) && (organized.equals("recommended"))) 
           {        
-              return movieService.findRecommendedMovies(organized); 
+              return movieService.findRecommendedMovies(organised); 
           } 
         return movieService.getAllMovies();    
      }
+     
      // path /movies/watched
-    @GET 
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
     //@Produces(MediaType.APPLICATION_XML)
-     public List<Movie> getWatchedMovies (@QueryParam("watched") String organized) 
+     public List<Movie> getWatchedMovies (@QueryParam("watched") String organised) 
      { 
-       if ((organized != null)) 
+       if ((organised != null) && (organised.equals("watched")))
           {        
-              return movieService.findWatchedMovies(organized); 
+              return movieService.findWatchedMovies(organised); 
           } 
         return movieService.getAllMovies();    
      } 
+     */
 }
