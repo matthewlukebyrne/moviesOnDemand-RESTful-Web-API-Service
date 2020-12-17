@@ -49,24 +49,9 @@ public class CustomersResources {
     @GET
     @Path("/{customerID}")
     @Produces(MediaType.APPLICATION_XML)
-    public Customer getCustomer(@PathParam("customerID") int customerID) {
-        return customerService.getCustomer(customerID);
+    public Customer getCustomer(@PathParam("customerID") int cust_ID) {
+        return customerService.getCustomer(cust_ID);
     }
-
-    /*
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Customers> getCustomerXML() {
-        return customerService.getAllCustomers();
-    }
-    
-    @GET
-    @Path("/{id}")
-    @Produces(MediaType.APPLICATION_XML)
-    public Customers getCustomerXML(@PathParam("id") int id) {
-        return customerService.getCustomer(id);
-    }
-    */
     
     //to create a new customer
     @POST
@@ -78,7 +63,7 @@ public class CustomersResources {
     
     //to path to accounts using AccountsResources
     @Path("/{customerID}/accounts")
-    public AccountsResources getAccountResources(@PathParam("customerID") int customerID) {
+    public AccountsResources getAccountResources(@PathParam("customerID") int cust_ID) {
 	System.out.println("Getting accounts subresources...");
 	return new AccountsResources();
     }

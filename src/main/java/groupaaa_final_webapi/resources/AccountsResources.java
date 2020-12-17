@@ -61,7 +61,7 @@ public class AccountsResources {
     }*/
     
     //to path to movies
-    @Path("/{accountID}/movies/")
+    @Path("/{accountID}/movies")
     @Produces(MediaType.APPLICATION_XML)
     public MovieResources getMoviesResources(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) {
 	System.out.println("Getting movies subresources...");

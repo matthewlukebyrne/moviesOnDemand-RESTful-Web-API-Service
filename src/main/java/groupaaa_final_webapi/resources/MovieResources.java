@@ -31,9 +31,9 @@ public class MovieResources {
     //List ALL Movies for a specific {Account} 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Movie> getAllMovies(@PathParam("customerID") int cust_ID, @PathParam("accountID") int acc_ID) {
-        System.out.println("get all movies for Accounts..."+acc_ID);
-	return movieService.getAllMoviesForAccount(cust_ID, acc_ID);
+    public List<Movie> getAllMovies(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) {
+        System.out.println("get all movies for Accounts..."+acc_id);
+	return movieService.getAllMoviesForAccount(cust_id, acc_id);
     }
     
     // list a specific {movieID} for a  specific {accountID}. 
