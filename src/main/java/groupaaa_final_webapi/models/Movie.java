@@ -14,9 +14,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Movie {
     private int movieID;
     private String name;
-    //private String genre;
     private String summary;
     private String organized;
+    //private String genre;
     
 
     
@@ -26,10 +26,9 @@ public class Movie {
     public Movie(int movieID, String name, String summary, String organized) {
         this.movieID = movieID;
         this.name = name;
-        //this.genre = genre;
         this.summary = summary;
         this.organized = organized;
-        
+        //this.genre = genre;
         
     }
 
@@ -48,14 +47,6 @@ public class Movie {
     public void setName(String name) {
         this.name = name;
     }
-
-    //public String getGenre() {
-    //    return genre;
-    //}
-
-   // public void setGenre(String genre) {
-    //    this.genre = genre;
-    //}
     
     public String getSummary() {
         return summary;
@@ -72,7 +63,14 @@ public class Movie {
     public void setOrganized(String organized) {
         this.organized = organized;
     }
+    
+    /*public String getGenre() {
+        return genre;
+    }
 
+     public void setGenre(String genre) {
+        this.genre = genre;
+    }*/
     
      public String printMovie() {
         String str = this.getMovieID() + " " + this.getName() + " "+ this.getSummary() + " "+ this.getOrganized();

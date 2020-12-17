@@ -23,7 +23,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(int accountID, String nickname, String password, List <Movie> movie ) {
+    public Account(int accountID, String nickname, String password, List <Movie> movies ) {
         this.accountID = accountID;
         this.nickname = nickname;
         this.password = password;
@@ -58,8 +58,8 @@ public class Account {
         return movies;
     }
 
-    public static void setMovies(List<Movie> movie) {
-        Account.movies = movie;
+    public static void setMovies(List<Movie> movies) {
+        Account.movies = movies;
     }  
     
     public void addMovie(Movie movie) {
