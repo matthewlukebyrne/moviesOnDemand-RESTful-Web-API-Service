@@ -51,11 +51,11 @@ public class MovieResources {
     @GET 
     @Produces(MediaType.APPLICATION_JSON)
     //@Produces(MediaType.APPLICATION_XML)
-     public List<Movie> getRecommendedMovies (@QueryParam("organized") String organized) 
+     public List<Movie> getRecommendedMovies (@QueryParam("organised") String organised) 
      { 
-       if ((organized != null) && (organized.equals("recommended"))) 
+       if ((organised != null) && (organized.equals("recommended"))) 
           {        
-              return movieService.findRecommendedMovies(organized); 
+              return movieService.findRecommendedMovies(organised); 
           } 
         return movieService.getAllMovies();    
      }
@@ -64,11 +64,11 @@ public class MovieResources {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     //@Produces(MediaType.APPLICATION_XML)
-     public List<Movie> getWatchedMovies (@QueryParam("watched") String organized) 
+     public List<Movie> getWatchedMovies (@QueryParam("watched") String organised) 
      { 
-       if ((organized != null) && (organized.equals("watched")))
+       if ((organised != null) && (organised.equals("watched")))
           {        
-              return movieService.findWatchedMovies(organized); 
+              return movieService.findWatchedMovies(organised); 
           } 
         return movieService.getAllMovies();    
      } 

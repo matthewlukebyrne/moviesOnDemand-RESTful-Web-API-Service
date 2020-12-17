@@ -15,7 +15,7 @@ public class Movie {
     private int movieID;
     private String name;
     private String summary;
-    private String organized;
+    private String organised;
     //private String genre;
     
 
@@ -27,7 +27,7 @@ public class Movie {
         this.movieID = movieID;
         this.name = name;
         this.summary = summary;
-        this.organized = organized;
+        this.organised = organized;
         //this.genre = genre;
         
     }
@@ -57,11 +57,11 @@ public class Movie {
     }
     
     public String getOrganized() {
-        return organized;
+        return organised;
     }
 
     public void setOrganized(String organized) {
-        this.organized = organized;
+        this.organised = organized;
     }
     
     /*public String getGenre() {
