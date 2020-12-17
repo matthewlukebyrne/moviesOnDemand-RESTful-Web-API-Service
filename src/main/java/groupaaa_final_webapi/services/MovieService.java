@@ -5,6 +5,7 @@ package groupaaa_final_webapi.services;
 
 import groupaaa_final_webapi.databases.Database;
 import groupaaa_final_webapi.models.Account;
+import groupaaa_final_webapi.models.Customer;
 import groupaaa_final_webapi.models.Movie;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,28 +17,28 @@ import java.util.List;
 
 public class MovieService {
 
-    
+    Database c = new Database();
+    private List<Customer> customers = c.getCustomersDB();
     Database m = new Database();
     private List<Movie> movies = m.getMoviesDB();
     Database a = new Database();
     private List<Account> accounts = a.getAccountsDB();
     
-  
-    // List movies
-    // The customer can request the list of movies that exist in any account at any time.
-    public List<Movie> getAllMovies() {
-        return movies;
-    }
 
     // Get Movies by specific ID
-    public List<Movie> getAllMoviesForAccount(int account_ID) {
+    public List<Movie> getAllMoviesForAccount(int customer_ID, int account_ID) {
         return accounts.get(account_ID-1).getMovies();
     }
     
-     public Movie getMovieByID(int account_ID, int movie_ID) {
-        return accounts.get(account_ID-1).getMovies().get(movie_ID-1);
+     public Movie getMovieByID(int customer_ID, int account_ID, int movie_ID) {
+        Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
+        Movie mov = acc.getMovies().get(movie_ID-1);
+        return mov;
     }
     
+     
+     
+     /*
     public List<Movie> findRecommendedMovies(String organized) {
       List<Movie> watchedMovies = new ArrayList<>();
 
@@ -58,5 +59,5 @@ public class MovieService {
           }
       }
       return watchedMovies;
-    }
+    }*/
 }

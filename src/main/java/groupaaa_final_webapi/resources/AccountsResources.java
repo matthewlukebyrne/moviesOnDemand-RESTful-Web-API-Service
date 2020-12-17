@@ -25,22 +25,13 @@ import javax.ws.rs.core.MediaType;
 
 
 
-@Path("/accounts")
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Path("/customers/{customerID}/accounts")
 @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
 public class AccountsResources {
 
    private AccountService accountService = new AccountService();
-   
-   /*
-   // http://localhost:49000/api/accounts
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Account> getAllAccountsInDatabase() {
-        System.out.println("get all Accounts");
-        return accountService.getAllAccounts();
-    }*/
    
     //List ALL Accountss for a specific {customerID} 
     @GET
@@ -55,7 +46,7 @@ public class AccountsResources {
     @GET
     @Path("/{accountID}")
     @Produces(MediaType.APPLICATION_XML)
-    public Account getAccount(@PathParam("accountID") int acc_id,@PathParam("customerID") int cust_id) {
+    public Account getAccount(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) {
     	System.out.println("getAccountByID..."+ acc_id + "getCustomerByID..."+cust_id);
 	return accountService.getAccountByID(cust_id,acc_id);
     }
@@ -72,7 +63,7 @@ public class AccountsResources {
     //to path to movies
     @Path("/{accountID}/movies/")
     @Produces(MediaType.APPLICATION_XML)
-    public MovieResources getMoviesResources() {
+    public MovieResources getMoviesResources(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) {
 	System.out.println("Getting movies subresources...");
 	return new MovieResources();
     }

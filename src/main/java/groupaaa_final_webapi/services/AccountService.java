@@ -18,34 +18,35 @@ import java.util.List;
 public class AccountService {
 
     // This is called from the the Database package
-    private List<Customer> customer = Database.getCustomersDB();
-    private List<Account> accounts = Database.getAccountsDB();
+    Database customerdb = new Database();
+    //do not make private final
+    private List<Customer> customers = customerdb.getCustomersDB();
     
-    public List<Account> getAllAccounts() {
-        return accounts;
+    Database accountdb = new Database();
+    private List<Account> accounts = accountdb.getAccountsDB();
+    
+    
+    //retrieves ALL Accounts for a specific CustomerID by calling getAccounts from Accounts.java
+    public List<Account> getAllAccountsByCustomer(int customer_ID) {
+        return customers.get(customer_ID-1).getAccounts();
     }
     
-    //retrieves ALL Accounts for a specific CustomerID
-    public List<Account> getAllAccountsByCustomer(int CustomerID) {
-        return customer.get(CustomerID-1).getAccounts();
-    }
-    
-    public Account getAccountByID(int customerID, int accountID) {
-        return customer.get(customerID-1).getAccounts().get(accountID-1);
+    public Account getAccountByID(int customer_ID, int account_ID) {
+        return customers.get(customer_ID-1).getAccounts().get(account_ID-1);
     }
 
     /*Customers should be able to create an account for a family member. If the customer
          has at least one account, he/she should be able to add additional accounts. For example, a
         typical customer may have an account for children and one account for the adult members of the family. */
     
-    public Account createAccount(Account a, int c_id) {
+    public Account createAccount(Account a, int customer_ID) {
         
-        Customer cust = customer.get(c_id-1);
+        Customer cust = customers.get(customer_ID-1);
         a.setAccountID(cust.getAccounts().size() + 1);
 	cust.addAccountToCustomer(a);
         
-        System.out.println("201 - resource created with path: /messages/" + String.valueOf(cust.getCustomerID())+"/comments/"+String.valueOf(a.getAccountID()));
-        System.out.println("Updated` Account Information:" + a.printAccount());
+        System.out.println("201 - resource created with path: /customer/" + String.valueOf(cust.getCustomerID())+"/accountss/"+String.valueOf(a.getAccountID()));
+        //System.out.println("Updated` Account Information:" + a.printAccount());
         return a;
     }
     

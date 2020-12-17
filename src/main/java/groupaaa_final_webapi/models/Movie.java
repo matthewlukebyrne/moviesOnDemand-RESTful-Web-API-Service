@@ -28,7 +28,6 @@ public class Movie {
         this.name = name;
         this.summary = summary;
         this.organised = organized;
-        //this.genre = genre;
         
     }
 
@@ -63,14 +62,6 @@ public class Movie {
     public void setOrganized(String organized) {
         this.organised = organized;
     }
-    
-    /*public String getGenre() {
-        return genre;
-    }
-
-     public void setGenre(String genre) {
-        this.genre = genre;
-    }*/
     
      public String printMovie() {
         String str = this.getMovieID() + " " + this.getName() + " "+ this.getSummary() + " "+ this.getOrganized();

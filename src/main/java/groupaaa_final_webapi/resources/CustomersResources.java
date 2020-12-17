@@ -32,8 +32,8 @@ import javax.ws.rs.core.MediaType;
 // 
 
 @Path("/customers")
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
 public class CustomersResources {
 
@@ -47,9 +47,9 @@ public class CustomersResources {
     }
         
     @GET
-    @Path("/{CustomerID}")
+    @Path("/{customerID}")
     @Produces(MediaType.APPLICATION_XML)
-    public Customer getCustomer(@PathParam("CustomerID") int customerID) {
+    public Customer getCustomer(@PathParam("customerID") int customerID) {
         return customerService.getCustomer(customerID);
     }
 
@@ -67,21 +67,21 @@ public class CustomersResources {
         return customerService.getCustomer(id);
     }
     */
-    /*
+    
     //to create a new customer
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
     public Customer postCustomer(Customer c) {
 	return customerService.createCustomer(c);
     }
     
-    //to path to accounts
-    @Path("/{customerID}/accounts/")
-    public AccountsResources getAccountResources() {
+    //to path to accounts using AccountsResources
+    @Path("/{customerID}/accounts")
+    public AccountsResources getAccountResources(@PathParam("customerID") int customerID) {
 	System.out.println("Getting accounts subresources...");
 	return new AccountsResources();
-    }*/
+    }
     
     
     //add more PUT, PATCH ect.

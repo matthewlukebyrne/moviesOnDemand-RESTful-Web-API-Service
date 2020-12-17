@@ -20,10 +20,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-@Path("/movies")
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Path("/customers/{customerID}/accounts/{accountsID}/movies")
 @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-
+@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class MovieResources {
 
     private MovieService movieService = new MovieService();
@@ -32,9 +31,9 @@ public class MovieResources {
     //List ALL Movies for a specific {Account} 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Movie> getAllMovies(@PathParam("accountID") int acc_ID) {
+    public List<Movie> getAllMovies(@PathParam("customerID") int cust_ID, @PathParam("accountID") int acc_ID) {
         System.out.println("get all movies for Accounts..."+acc_ID);
-	return movieService.getAllMoviesForAccount(acc_ID);
+	return movieService.getAllMoviesForAccount(cust_ID, acc_ID);
     }
     
     // list a specific {movieID} for a  specific {accountID}. 
@@ -42,18 +41,18 @@ public class MovieResources {
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/{movieID}")
-    public Movie getMovie(@PathParam("movieID") int movie_ID, @PathParam("accountID") int acc_ID) {
-    	System.out.println("getMovieByID..."+movie_ID +"getAccountByID..."+acc_ID);
-	return movieService.getMovieByID(acc_ID,movie_ID);
+    public Movie getMovie(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @PathParam("movieID") int mov_id) {
+    	System.out.println("getCustomerByID..."+cust_id+"getAccountByID..."+acc_id+"getMovieByID..."+mov_id);
+	return movieService.getMovieByID(cust_id,acc_id,mov_id);
     }
     /*
     // path /movies/recommended
     @GET 
-    @Produces(MediaType.APPLICATION_JSON)
-    //@Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    //@Produces(MediaType.APPLICATION_JSON)
      public List<Movie> getRecommendedMovies (@QueryParam("organised") String organised) 
      { 
-       if ((organised != null) && (organized.equals("recommended"))) 
+       if ((organised != null) && (organised.equals("recommended"))) 
           {        
               return movieService.findRecommendedMovies(organised); 
           } 
@@ -62,8 +61,8 @@ public class MovieResources {
      
      // path /movies/watched
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    //@Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    //@Produces(MediaType.APPLICATION_JSON)
      public List<Movie> getWatchedMovies (@QueryParam("watched") String organised) 
      { 
        if ((organised != null) && (organised.equals("watched")))
@@ -71,6 +70,6 @@ public class MovieResources {
               return movieService.findWatchedMovies(organised); 
           } 
         return movieService.getAllMovies();    
-     } 
-     */
+     } */
+     
 }
