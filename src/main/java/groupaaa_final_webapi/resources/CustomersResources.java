@@ -42,7 +42,7 @@ public class CustomersResources {
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Customer> getALLCustomersXML() {
+    public List<Customer> getALLCustomers() {
         return customerService.getAllCustomers();
     }
         

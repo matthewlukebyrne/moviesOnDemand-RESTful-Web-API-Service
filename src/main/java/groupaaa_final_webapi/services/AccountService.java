@@ -12,6 +12,7 @@ package groupaaa_final_webapi.services;
 import groupaaa_final_webapi.databases.Database;
 import groupaaa_final_webapi.models.Account;
 import groupaaa_final_webapi.models.Customer;
+import groupaaa_final_webapi.models.Movie;
 import java.util.List;
 
 
@@ -49,5 +50,15 @@ public class AccountService {
         //System.out.println("Updated` Account Information:" + a.printAccount());
         return a;
     }
+
+    public List<Movie> deleteMovieByID(int customer_ID, int account_ID, int movie_ID) {
+        Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
+        acc.removeMovie(movie_ID-1);
+        return accounts.get(account_ID-1).getMovies();
+    }
     
+    /* //this is to find all movies of all a customers accounts  
+    public List<Movie> getAllMoviesByCustomer(int customer_ID) {
+        return customers.get(customer_ID-1).getAccounts().getMovies();
+    }*/
 }

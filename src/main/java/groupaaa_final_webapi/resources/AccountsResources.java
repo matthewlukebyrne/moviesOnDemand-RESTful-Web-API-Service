@@ -12,10 +12,14 @@
 package groupaaa_final_webapi.resources;
 
 import groupaaa_final_webapi.models.Account;
+import groupaaa_final_webapi.models.Movie;
+import groupaaa_final_webapi.models.Customer;
 import groupaaa_final_webapi.services.AccountService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -51,14 +55,13 @@ public class AccountsResources {
 	return accountService.getAccountByID(cust_id,acc_id);
     }
     
-    /*
     //to create a new account for a specificcustomer
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Account postAccount(@PathParam("CustomerID") int cust_id, Account a) {
+    @Consumes(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_XML)
+    public Account postAccount(@PathParam("customerID") int cust_id, Account a) {
 	return accountService.createAccount(a , cust_id);
-    }*/
+    }
     
     //to path to movies
     @Path("/{accountID}/movies")
@@ -67,5 +70,34 @@ public class AccountsResources {
 	System.out.println("Getting movies subresources...");
 	return new MovieResources();
     }
+    
+    /*
+    //DELETE a movie from an accounts list 
+    @DELETE
+    @Produces(MediaType.APPLICATION_XML)
+    @Path("/{accountID}/delete/{movieID}")
+    public List<Movie> deleteMovie(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @PathParam("movieID") int mov_id) {
+    	System.out.println("getCustomerByID..."+cust_id+"getAccountByID..."+acc_id+"deleteMovieByID..."+mov_id);
+	//returns the list of movies after a movie was deleted, since we cannot return a deleted movie
+        return accountService.deleteMovieByID(cust_id,acc_id,mov_id);
+    }*/
+    
+    /*
+    @Path("/movies")
+    @Produces(MediaType.APPLICATION_XML)
+    public MovieResources getAllMoviesForCustomer(@PathParam("customerID") int cust_id) {
+	System.out.println("Getting all movies");
+        List<Movie> allMovies = new ArrayList<>();
+          
+            for (Account acc: return accountService.getAllAccountsByCustomer(cust_id)) { 
+                List<Movie> movies = acc.getMovies();
+                for (Movie mov: return getAllMoviesForAccount(int customer_ID, int account_ID)) { 
+                    List<Movie> movies = acc.getMovies();
+                
+            }
+        }
+        return allMovies;
+    }
+    */
        
 }
