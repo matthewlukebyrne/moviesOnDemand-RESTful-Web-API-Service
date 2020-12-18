@@ -30,8 +30,10 @@ import javax.ws.rs.core.MediaType;
 
 
 @Path("/customers/{customerID}/accounts")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Consumes(MediaType.APPLICATION_XML)
+@Produces(MediaType.APPLICATION_XML)
+//@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
 public class AccountsResources {
 
@@ -55,7 +57,7 @@ public class AccountsResources {
 	return accountService.getAccountByID(cust_id,acc_id);
     }
     
-    //to create a new account for a specificcustomer
+    //to create a new account for a specific customer
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
@@ -71,16 +73,7 @@ public class AccountsResources {
 	return new MovieResources();
     }
     
-    /*
-    //DELETE a movie from an accounts list 
-    @DELETE
-    @Produces(MediaType.APPLICATION_XML)
-    @Path("/{accountID}/delete/{movieID}")
-    public List<Movie> deleteMovie(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @PathParam("movieID") int mov_id) {
-    	System.out.println("getCustomerByID..."+cust_id+"getAccountByID..."+acc_id+"deleteMovieByID..."+mov_id);
-	//returns the list of movies after a movie was deleted, since we cannot return a deleted movie
-        return accountService.deleteMovieByID(cust_id,acc_id,mov_id);
-    }*/
+    
     
     /*
     @Path("/movies")

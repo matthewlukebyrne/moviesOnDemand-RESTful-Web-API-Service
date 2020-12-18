@@ -17,6 +17,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -24,14 +25,16 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("/customers/{customerID}/accounts/{accountID}/movies")
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Consumes(MediaType.APPLICATION_XML)
+@Produces(MediaType.APPLICATION_XML)
+//@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 public class MovieResources {
 
     private MovieService movieService = new MovieService();
     
     
-    //List ALL Movies for a specific {Account} 
+    //List ALL Movies for any {Account} at any time 
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public List<Movie> getAllMovies(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) {
@@ -49,7 +52,7 @@ public class MovieResources {
 	return movieService.getMovieByID(cust_id,acc_id,mov_id);
     }
     
-    //to create a new account for a specificcustomer
+    //add a new recommended movie to an account
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
@@ -63,8 +66,8 @@ public class MovieResources {
     
     //this could be a PUT, and possibly in accounts not movies
     
-    //add a new recommended movie to an account
-    @GET
+    //add a new recommended movie to an account, this way will set the movie param organized to "mylist"
+    @PUT
     @Produces(MediaType.APPLICATION_XML)
     @Path("/add/{movieID}")
     //return a list of movies after a movie has been added by id
@@ -76,7 +79,7 @@ public class MovieResources {
     
     @DELETE
     @Produces(MediaType.APPLICATION_XML)
-    @Path("/delete/{movieID}")
+    @Path("{movieID}")
     public List<Movie> deleteMovie(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @PathParam("movieID") int mov_id) {
     	System.out.println("getCustomerByID..."+cust_id+"getAccountByID..."+acc_id+"deleteMovieByID..."+mov_id);
 	//returns the list of movies after a movie was deleted, since we cannot return a deleted movie

@@ -41,16 +41,19 @@ public class MovieService {
     
     public Movie addMovieThatWasRecommened(Movie m, int customer_ID, int account_ID) {
         
-        Customer cust = customers.get(customer_ID-1);
-        //int custID = cust.getCustomerID();
-        Account acc = accounts.get(account_ID-1);
+        Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
         m.setMovieID(acc.getMovies().size() + 1);
 	acc.addMovie(m);
-        
-        System.out.println("201 - resource created with path: /customer/" + String.valueOf(cust.getCustomerID())+"/accounts/"+String.valueOf(acc.getAccountID())+"/movie/"+String.valueOf(m.getMovieID()));
         return m;
+       
     }
     
+    
+    public List<Movie> deleteMovieByID(int customer_ID, int account_ID, int movie_ID) {
+        Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
+        acc.removeMovie(movie_ID-1);
+        return accounts.get(account_ID-1).getMovies();
+    }
     
     
     /////////
@@ -64,12 +67,6 @@ public class MovieService {
     }
     
     
-    
-    public List<Movie> deleteMovieByID(int customer_ID, int account_ID, int movie_ID) {
-        Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
-        acc.removeMovie(movie_ID-1);
-        return accounts.get(account_ID-1).getMovies();
-    }
     
     
     

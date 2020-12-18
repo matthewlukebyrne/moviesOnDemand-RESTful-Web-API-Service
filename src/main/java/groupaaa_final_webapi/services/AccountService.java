@@ -26,6 +26,8 @@ public class AccountService {
     Database accountdb = new Database();
     private List<Account> accounts = accountdb.getAccountsDB();
     
+    Database moviedb = new Database();
+    private List<Movie> movies = moviedb.getMoviesDB();
     
     //retrieves ALL Accounts for a specific CustomerID by calling getAccounts from Accounts.java
     public List<Account> getAllAccountsByCustomer(int customer_ID) {
@@ -36,10 +38,7 @@ public class AccountService {
         return customers.get(customer_ID-1).getAccounts().get(account_ID-1);
     }
 
-    /*Customers should be able to create an account for a family member. If the customer
-         has at least one account, he/she should be able to add additional accounts. For example, a
-        typical customer may have an account for children and one account for the adult members of the family. */
-    
+    /*Customers should be able to create an account for a family member. */
     public Account createAccount(Account a, int customer_ID) {
         
         Customer cust = customers.get(customer_ID-1);
@@ -50,14 +49,15 @@ public class AccountService {
         //System.out.println("Updated` Account Information:" + a.printAccount());
         return a;
     }
-
+    
+    /*
     public List<Movie> deleteMovieByID(int customer_ID, int account_ID, int movie_ID) {
         Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
         acc.removeMovie(movie_ID-1);
         return accounts.get(account_ID-1).getMovies();
-    }
+    }*/
     
-    /* //this is to find all movies of all a customers accounts  
+    /* //this is to find all movies of all customers accounts  
     public List<Movie> getAllMoviesByCustomer(int customer_ID) {
         return customers.get(customer_ID-1).getAccounts().getMovies();
     }*/
