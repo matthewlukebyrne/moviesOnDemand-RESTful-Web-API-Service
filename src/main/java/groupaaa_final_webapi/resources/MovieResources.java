@@ -27,23 +27,22 @@ import javax.ws.rs.core.MediaType;
 @Path("/customers/{customerID}/accounts/{accountID}/movies")
 @Consumes(MediaType.APPLICATION_XML)
 @Produces(MediaType.APPLICATION_XML)
-//@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+
 public class MovieResources {
 
     private MovieService movieService = new MovieService();
-    
-    
-    //List ALL Movies for any {Account} at any time 
+   
+    // URL: localhost:49000/api/customers/1/accounts/1/movies
+    // List Movies - The customer can request a list of all Movies for any {Account} 
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public List<Movie> getAllMovies(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) {
         System.out.println("get all movies for Accounts..."+acc_id);
 	return movieService.getAllMoviesForAccount(cust_id, acc_id);
     }
-    
-    // list a specific {movieID} for a  specific {accountID}. 
-    //GET accounts for a customer specifying the customerID that was associated with @PATH in the Accounts Resources
+     
+    // URL: GET localhost:49000/api/customers/1/accounts/1/movies/2
+    // list a specific {movieID} for a  specific {accountID}
     @GET
     @Produces(MediaType.APPLICATION_XML)
     @Path("/{movieID}")
@@ -52,97 +51,71 @@ public class MovieResources {
 	return movieService.getMovieByID(cust_id,acc_id,mov_id);
     }
     
+    // URL: localhost:49000/api/customers/1/accounts/1/movies
+    // with parameters specified in the body
     //add a new recommended movie to an account
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public Movie postAccount(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, Movie m) {
-	movieService.addMovieThatWasRecommened(m , cust_id, acc_id);
+    public Movie postMovie(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, Movie m) {
+	movieService.addANewMovie(m , cust_id, acc_id);
         return m;
     }
     
     
-    
-    
-    //this could be a PUT, and possibly in accounts not movies
-    
-    //add a new recommended movie to an account, this way will set the movie param organized to "mylist"
+    // URL: localhost:49000/api/customers/1/accounts/1/movies/transferMovie/1?transferAccountID=2
+    // transfer a movie from one customers account to another
     @PUT
-    @Produces(MediaType.APPLICATION_XML)
-    @Path("/add/{movieID}")
-    //return a list of movies after a movie has been added by id
-    public List<Movie> addRecommendedMovie(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @PathParam("movieID") int mov_id) {
-    	System.out.println("getCustomerByID..."+cust_id+"getAccountByID..."+acc_id+"getMovieByID..."+mov_id);
-	return movieService.addRecommendedMovieByID(cust_id,acc_id,mov_id);
-    }
+    @Path("/transferMovie/{movieId}")
+    public Movie transferMovie(@QueryParam("transferAccountID") int transferAcc_id, @PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @PathParam("movieID") int mov_id) {
+            return movieService.transferMovieByID(transferAcc_id, cust_id, acc_id, mov_id);
+    } 
     
     
+    // URL: localhost:49000/api/customers/1/accounts/1/movies/1
+    // with parameters specified in the body
     @DELETE
     @Produces(MediaType.APPLICATION_XML)
-    @Path("{movieID}")
+    @Path("/{movieID}")
     public List<Movie> deleteMovie(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @PathParam("movieID") int mov_id) {
     	System.out.println("getCustomerByID..."+cust_id+"getAccountByID..."+acc_id+"deleteMovieByID..."+mov_id);
 	//returns the list of movies after a movie was deleted, since we cannot return a deleted movie
         return movieService.deleteMovieByID(cust_id,acc_id,mov_id);
     }
     
-        
-        
-        
-        
-        
-    /*
-    // root path /movies will path to all my movies, which are specidied by the my 
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Movie> getMyMovies (@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @QueryParam("organised") String org) 
-    { 
-        List<Movie> movies = new ArrayList<>();
-        if ((org != null) && (org.equals("My-List"))) 
-           {   
-            for (Movie mov: movieService.findMyRecommendedMovies(cust_id, acc_id, org)) { 
-                if ((mov.equals(org))) {
-                    movies.add(mov);
-                }
-            }
-        }
-        return movies;
-    }    
+
+
     
-    // path /movies?organised=recommended
+        
+        
+    // URL: localhost:49000/api/customers/{customerID}/accounts/{accountID}/movies/recommended
+    // A customer can retrieve their recommended movie(s) specific to an account.
     @GET 
     @Path("/recommended")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Movie> getRecommendedMovies (@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @QueryParam("organised") String org) 
+    public List<Movie> getRecommendedMovies (@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) 
     { 
         List<Movie> movies = new ArrayList<>();
-        if ((org != null) && (org.equals("recommended"))) 
-           {   
-            for (Movie mov: movieService.findMyRecommendedMovies(cust_id, acc_id, org)) { 
-                if ((mov.equals(org))) {
-                    movies.add(mov);
-                }
-            }
-        }
+         
+        for (Movie mov: movieService.findMyRecommendedMovies(cust_id, acc_id)) { 
+                movies.add(mov);
+            } 
         return movies;
     }
      
-    // path /movies?organised=watched
+    // URL: localhost:49000/api/customers/{customerID}/accounts/{accountID}/movies/watched
+    // A customer can retrieve their watched movie(s) specific to an account.
     @GET
     @Path("/watched")
     @Produces(MediaType.APPLICATION_XML)
-    public List<Movie> getWatchedMovies (@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id, @QueryParam("watched") String org) 
+    public List<Movie> getWatchedMovies (@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) 
     { 
         List<Movie> movies = new ArrayList<>();
-        if ((org != null) && (org.equals("watched"))) 
-           {   
-            for (Movie mov: movieService.findMyRecommendedMovies(cust_id, acc_id, org)) { 
-                if ((mov.equals(org))) {
-                    movies.add(mov);
-                }
-            }
-        }
-        return movies;    
+         
+        for (Movie mov: movieService.findMyWatchedMovies(cust_id, acc_id)) { 
+                movies.add(mov);
+            } 
+        return movies;   
     } 
-    */
+
 }

@@ -32,14 +32,13 @@ import javax.ws.rs.core.MediaType;
 @Path("/customers/{customerID}/accounts")
 @Consumes(MediaType.APPLICATION_XML)
 @Produces(MediaType.APPLICATION_XML)
-//@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-//@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 
 public class AccountsResources {
 
    private AccountService accountService = new AccountService();
-   
-    //List ALL Accountss for a specific {customerID} 
+    
+    // localhost:49000/api/customers/{customerID}/accounts
+    // List ALL Accounts for a specific {customerID} 
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public List<Account> getAllAccounts(@PathParam("customerID") int cust_id) {
@@ -47,8 +46,8 @@ public class AccountsResources {
 	return accountService.getAllAccountsByCustomer(cust_id);
     }
     
+    // localhost:49000/api/customers/{customerID}/accounts/{accountID}
     // list a specific {accountID} for a  specific {customerID}. 
-    //GET accounts for a customer specifying the customerID that was associated with @PATH in the Customer Resources
     @GET
     @Path("/{accountID}")
     @Produces(MediaType.APPLICATION_XML)
@@ -57,7 +56,9 @@ public class AccountsResources {
 	return accountService.getAccountByID(cust_id,acc_id);
     }
     
-    //to create a new account for a specific customer
+    // localhost:49000/api/customers/{customerID}/accounts
+    // with parameters specified in the body
+    // Add a new account for a customer
     @POST
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
@@ -65,32 +66,11 @@ public class AccountsResources {
 	return accountService.createAccount(a , cust_id);
     }
     
-    //to path to movies
+    // To path to movies (MovieResources)
     @Path("/{accountID}/movies")
     @Produces(MediaType.APPLICATION_XML)
     public MovieResources getMoviesResources(@PathParam("customerID") int cust_id, @PathParam("accountID") int acc_id) {
 	System.out.println("Getting movies subresources...");
 	return new MovieResources();
-    }
-    
-    
-    
-    /*
-    @Path("/movies")
-    @Produces(MediaType.APPLICATION_XML)
-    public MovieResources getAllMoviesForCustomer(@PathParam("customerID") int cust_id) {
-	System.out.println("Getting all movies");
-        List<Movie> allMovies = new ArrayList<>();
-          
-            for (Account acc: return accountService.getAllAccountsByCustomer(cust_id)) { 
-                List<Movie> movies = acc.getMovies();
-                for (Movie mov: return getAllMoviesForAccount(int customer_ID, int account_ID)) { 
-                    List<Movie> movies = acc.getMovies();
-                
-            }
-        }
-        return allMovies;
-    }
-    */
-       
+    }     
 }

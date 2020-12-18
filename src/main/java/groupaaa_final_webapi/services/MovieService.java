@@ -38,8 +38,8 @@ public class MovieService {
         //return mov;
     }
     
-    
-    public Movie addMovieThatWasRecommened(Movie m, int customer_ID, int account_ID) {
+    // Post a new recommended movie
+    public Movie addANewMovie(Movie m, int customer_ID, int account_ID) {
         
         Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
         m.setMovieID(acc.getMovies().size() + 1);
@@ -49,6 +49,7 @@ public class MovieService {
     }
     
     
+    // Remove a Movie by specific ID
     public List<Movie> deleteMovieByID(int customer_ID, int account_ID, int movie_ID) {
         Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
         acc.removeMovie(movie_ID-1);
@@ -56,14 +57,14 @@ public class MovieService {
     }
     
     
-    /////////
-    /////////
-    /////////
-    ///////// change this to just add a new movie as in post,i.e add a new movie with the reccomended param to an account.  and if it doesnt work like ben and doesnt add to a specific account, then try the filter way and create a new method for addRecommendedMovie
-    public List<Movie> addRecommendedMovieByID(int customer_ID, int account_ID, int movie_ID){
-        Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
-        //acc.addRecommendedMovie(movie_ID-1);
-        return accounts.get(account_ID-1).getMovies();
+    
+    
+    public Movie transferMovieByID(int transferAcc_ID, int customer_ID, int account_ID, int movie_ID) {
+        Movie mov = getMovieByID(customer_ID, account_ID, movie_ID);
+        //not sure if this is the "right" way but essentially we are adding to another account and then removing from the account we are currently in
+        deleteMovieByID(customer_ID, account_ID, movie_ID);
+        addANewMovie(mov, customer_ID, transferAcc_ID);
+        return mov;
     }
     
     
@@ -71,35 +72,25 @@ public class MovieService {
     
     
     
-    
-    
-    public List<Movie> findMyListOfMovies(int customer_ID, int account_ID, String org) {
-      List<Movie> watchedMovies = new ArrayList<>();
+   
+    // find all recommended movies specific to an account 
+    public List<Movie> findMyRecommendedMovies(int customer_ID, int account_ID) {
+      List<Movie> recommendedMovies = new ArrayList<>();
 
       for (Movie m: getAllMoviesForAccount(customer_ID, account_ID)) {
-          if ((m.equals(org))) {
-             watchedMovies.add(m);
+          if ((m.getOrganised().equals("recommended"))) {
+             recommendedMovies.add(m);
           }
       }
-      return watchedMovies;
-    }
-     
-    public List<Movie> findMyRecommendedMovies(int customer_ID, int account_ID, String org) {
-      List<Movie> watchedMovies = new ArrayList<>();
-
-      for (Movie m: getAllMoviesForAccount(customer_ID, account_ID)) {
-          if ((m.equals(org))) {
-             watchedMovies.add(m);
-          }
-      }
-      return watchedMovies;
+      return recommendedMovies;
     }
     
-    public List<Movie> findMyWatchedMovies(int customer_ID, int account_ID, String org) {
+     // find all watched movies specific to an account
+    public List<Movie> findMyWatchedMovies(int customer_ID, int account_ID) {
       List<Movie> watchedMovies = new ArrayList<>();
 
       for (Movie m: getAllMoviesForAccount(customer_ID, account_ID)) {
-          if ((m.equals(org))) {
+          if ((m.getOrganised().equals("watched"))) {
              watchedMovies.add(m);
           }
       }

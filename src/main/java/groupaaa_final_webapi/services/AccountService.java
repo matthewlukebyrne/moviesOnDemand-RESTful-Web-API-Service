@@ -50,15 +50,4 @@ public class AccountService {
         return a;
     }
     
-    /*
-    public List<Movie> deleteMovieByID(int customer_ID, int account_ID, int movie_ID) {
-        Account acc = customers.get(customer_ID-1).getAccounts().get(account_ID-1);
-        acc.removeMovie(movie_ID-1);
-        return accounts.get(account_ID-1).getMovies();
-    }*/
-    
-    /* //this is to find all movies of all customers accounts  
-    public List<Movie> getAllMoviesByCustomer(int customer_ID) {
-        return customers.get(customer_ID-1).getAccounts().getMovies();
-    }*/
 }

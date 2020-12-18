@@ -28,7 +28,7 @@ public class Database {
         if (init) {
 
             // Create some movies
-            Movie m1 = new Movie(1, "Matrix", "sci-fi", "My-list");
+            Movie m1 = new Movie(1, "Matrix", "sci-fi", "recommended");
             Movie m2 = new Movie(2, "Nacho Libre 2", "comedy", "recommended");
             Movie m3 = new Movie(3, "Harry potter", "Thriller", "watched");
             //Movie m4 = new Movie(4, "Terminator", "sci-fi", "recommended");

@@ -55,16 +55,16 @@ public class Movie {
         this.summary = summary;
     }
     
-    public String getOrganized() {
+    public String getOrganised() {
         return organised;
     }
 
-    public void setOrganized(String organized) {
+    public void setOrganised(String organized) {
         this.organised = organized;
     }
     
      public String printMovie() {
-        String str = this.getMovieID() + " " + this.getName() + " "+ this.getSummary() + " "+ this.getOrganized();
+        String str = this.getMovieID() + " " + this.getName() + " "+ this.getSummary() + " "+ this.getOrganised();
         return str;
     }
 }
