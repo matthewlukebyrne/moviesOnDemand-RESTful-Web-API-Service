@@ -67,6 +67,12 @@ public class Account {
         System.out.println("add a new movie");
     }
    
+    //remove movie from account by position passed
+    public void removeMovie(int accountPos) {
+	movies.remove(accountPos);
+        System.out.println("removed a movie");
+    } 
+    
     public String printAccount() {
         String str = this.getAccountID() + " " + this.getNickname() + " "+ this.getPassword() +  Account.getMovies();
         return str;

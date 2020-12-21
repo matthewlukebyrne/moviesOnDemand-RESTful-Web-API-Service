@@ -17,8 +17,9 @@ public class CustomerService {
     
     
     // This is called from the the Database package
-    private final List<Customer> customers = Database.getCustomersDB();
-    
+    Database customerdb = new Database();
+    //do not make private final
+    private List<Customer> customers = customerdb.getCustomersDB();
 
     /*Customers should be able to create an account for a family member. If the customer
          has at least one account, he/she should be able to add additional accounts. For example, a
@@ -28,16 +29,15 @@ public class CustomerService {
         return customers;
     }
 
-    public Customer getCustomer(int CustomerID) {
-        //return customers.get(id - 1);
-        return customers.get(CustomerID);
+    public Customer getCustomer(int customerID) {
+        return customers.get(customerID-1);
     }
     
     public Customer createCustomer(Customer c) {
         c.setCustomerID(customers.size() + 1);
         customers.add(c);
-        System.out.println("201 - resource created with path: /create/customer" + String.valueOf(c.getCustomerID()));
-        System.out.println("Updated` Customers:" + c.printCustomer());
+        System.out.println("201 - resource created " + String.valueOf(c.getCustomerID()));
+        //System.out.println("Updated` Customers:" + c.printCustomer());
         return c;
     }
     
